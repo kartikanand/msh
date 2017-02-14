@@ -2,3 +2,7 @@
 *.a
 *.so
 *.out
+
+bin
+lib
+
