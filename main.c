@@ -1,8 +1,8 @@
-#include <stdio.h>
-
 #include "shell.h"
 
 int main () {
+
+    print_banner();
 
     int err = 0;
     do {
