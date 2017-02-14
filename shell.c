@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "shell.h"
 
 
@@ -12,11 +13,15 @@ void print_prompt () {
 }
 
 
-void read (char **input) {
+int read (char **input) {
+    size_t len;
+
+    int err = getline(input, &len, stdin);
+    return err;
 }
 
 
 int eval (const char *input) {
-    return 1;
+    return 0;
 }
 

@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "shell.h"
 
 int main () {
@@ -9,8 +10,8 @@ int main () {
         print_prompt();
         
         // read
-        char *input;
-        read(&input);
+        char *input = NULL;
+        err = read(&input);
         
         // eval
         err = eval(input);
