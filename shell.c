@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "shell.h"
+#include "utils.h"
 
 
 void print_banner () {
@@ -22,6 +23,15 @@ int read (char **input) {
 
 
 int eval (const char *input) {
+    char **tokens;
+
+    int num_tokens = tokenize_line(input, &tokens);
+    while (num_tokens) {
+        printf("token : %s\n", tokens[num_tokens-1]);
+
+        num_tokens--;
+    }
+
     return 0;
 }
 

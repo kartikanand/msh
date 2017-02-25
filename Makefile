@@ -1,14 +1,14 @@
 CC=gcc
-CFLAGS=-I.
-DEPS=shell.h
+CFLAGS=-I. -g
+DEPS=shell.h utils.h
 
 BIN_DIR=bin
 LIB_DIR=lib
 
 .PHONY: clean
 
-$(BIN_DIR)/msh: $(LIB_DIR)/shell.o | $(BIN_DIR)
-	$(CC) -o $@ $(LIB_DIR)/shell.o main.c $(DEPS)
+$(BIN_DIR)/msh: $(LIB_DIR)/shell.o $(LIB_DIR)/utils.o | $(BIN_DIR)
+	$(CC) -o $@ $(LIB_DIR)/shell.o $(LIB_DIR)/utils.o main.c $(CFLAGS)
 
 $(LIB_DIR):
 	@mkdir -p $(LIB_DIR)
