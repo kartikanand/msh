@@ -11,7 +11,7 @@ int main () {
         
         // read
         char *input = NULL;
-        err = read(&input);
+        err = read_line(&input);
         
         // eval
         err = eval(input);

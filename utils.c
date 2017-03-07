@@ -28,8 +28,8 @@ int tokenize_line(const char *line, char ***tokens) {
     // clear new lines
     strip_line(line_dup);
 
-    // by default we support 1024 tokens
-    (*tokens) = (char**)malloc(sizeof(char*) * 1024);
+    // by default we support 1024 tokens. Plus one for final NULL pointer
+    (*tokens) = (char**)malloc(sizeof(char*) * 1025);
 
     const char *delim = " ";
     char *token = strtok(line_dup, delim);
@@ -39,6 +39,7 @@ int tokenize_line(const char *line, char ***tokens) {
         (*tokens)[num_tokens++] = token;
         token = strtok(NULL, delim);
     }
+    (*tokens)[num_tokens] = NULL;
 
     return num_tokens;
 }
