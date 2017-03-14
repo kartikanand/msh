@@ -1,22 +1,20 @@
 CC=gcc
 CFLAGS=-I. -g
-DEPS=shell.h utils.h
+DEPS=$(wildcard *.h)
 
 BIN_DIR=bin
 LIB_DIR=lib
 
+OBJS=$(LIB_DIR)/shell.o $(LIB_DIR)/utils.o $(LIB_DIR)/builtins.o
+
 .PHONY: clean
 
-$(BIN_DIR)/msh: $(LIB_DIR)/shell.o $(LIB_DIR)/utils.o | $(BIN_DIR)
-	$(CC) -o $@ $(LIB_DIR)/shell.o $(LIB_DIR)/utils.o main.c $(CFLAGS)
+$(BIN_DIR)/msh: $(OBJS) main.c
+	@mkdir -p bin ;\
+	$(CC) -o $@ $^ $(CFLAGS)
 
-$(LIB_DIR):
-	@mkdir -p $(LIB_DIR)
-
-$(BIN_DIR):
-	@mkdir -p $(BIN_DIR)
-
-$(LIB_DIR)/%.o: %.c $(DEPS) | $(LIB_DIR)
+$(LIB_DIR)/%.o: %.c $(DEPS)
+	@mkdir -p lib ;\
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 clean:

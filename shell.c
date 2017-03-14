@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include "builtins.h"
 #include "shell.h"
 #include "utils.h"
 
@@ -29,6 +30,12 @@ int eval (const char *input) {
     char **tokens;
 
     int num_tokens = tokenize_line(input, &tokens);
+
+    BUILTIN_CMD cmd = is_builtin(tokens[0]);
+    if (cmd != -1) {
+        call_builtin(cmd, (const char**)tokens);
+        return 0;
+    }
 
     pid_t pid = fork();
 

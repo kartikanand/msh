@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include<stdio.h>
 #include "shell.h"
 
 int main () {
@@ -12,7 +13,7 @@ int main () {
         // read
         char *input = NULL;
         err = read_line(&input);
-        
+
         // eval
         err = eval(input);
 
