@@ -13,6 +13,7 @@ int main () {
         // read
         char *input = NULL;
         err = read_line(&input);
+        if(err) break;
 
         // eval
         err = eval(input);
