@@ -31,8 +31,8 @@ int eval (const char *input) {
 
     int num_tokens = tokenize_line(input, &tokens);
 
-    BUILTIN_CMD cmd = is_builtin(tokens[0]);
-    if (cmd != -1) {
+    BUILTIN_CMD cmd = get_builtin(tokens[0]);
+    if (cmd != BLTIN_NONE) {
         call_builtin(cmd, (const char**)tokens);
         return 0;
     }
