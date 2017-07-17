@@ -8,7 +8,7 @@ INC_DIR=include
 CFLAGS=-I$(INC_DIR) -g
 DEPS=$(wildcard $(INC_DIR)/*.h)
 
-OBJS=$(LIB_DIR)/shell.o $(LIB_DIR)/utils.o $(LIB_DIR)/builtins.o
+OBJS=$(LIB_DIR)/shell.o $(LIB_DIR)/builtins.o
 
 .PHONY: clean
 
